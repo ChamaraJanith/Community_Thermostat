@@ -1,0 +1,122 @@
+// Generate 48 data points for sentiment timeline (every 30 min over 24h)
+export const sentimentTimeline = [
+  { time: '00:00', score: 15, volume: 12 },
+  { time: '00:30', score: 18, volume: 8 },
+  { time: '01:00', score: 12, volume: 5 },
+  { time: '01:30', score: 10, volume: 3 },
+  { time: '02:00', score: 8, volume: 2 },
+  { time: '02:30', score: 5, volume: 1 },
+  { time: '03:00', score: 7, volume: 1 },
+  { time: '03:30', score: 10, volume: 2 },
+  { time: '04:00', score: 12, volume: 3 },
+  { time: '04:30', score: 15, volume: 5 },
+  { time: '05:00', score: 20, volume: 8 },
+  { time: '05:30', score: 25, volume: 12 },
+  { time: '06:00', score: 30, volume: 18 },
+  { time: '06:30', score: 35, volume: 25 },
+  { time: '07:00', score: 40, volume: 32 },
+  { time: '07:30', score: 45, volume: 38 },
+  { time: '08:00', score: 50, volume: 45 },
+  { time: '08:30', score: 52, volume: 50 },
+  { time: '09:00', score: 55, volume: 58 },
+  { time: '09:30', score: 58, volume: 62 },
+  { time: '10:00', score: 60, volume: 68 },
+  { time: '10:30', score: 62, volume: 72 },
+  { time: '11:00', score: 58, volume: 75 },
+  { time: '11:30', score: 55, volume: 78 },
+  { time: '12:00', score: 50, volume: 82 },
+  { time: '12:30', score: 45, volume: 85 },
+  { time: '13:00', score: 35, volume: 80 },
+  { time: '13:30', score: 25, volume: 75 },
+  { time: '14:00', score: -10, volume: 88 },
+  { time: '14:30', score: -25, volume: 92 },
+  { time: '15:00', score: -15, volume: 85 },
+  { time: '15:30', score: -5, volume: 78 },
+  { time: '16:00', score: 5, volume: 72 },
+  { time: '16:30', score: 15, volume: 68 },
+  { time: '17:00', score: 25, volume: 70 },
+  { time: '17:30', score: 35, volume: 75 },
+  { time: '18:00', score: 45, volume: 80 },
+  { time: '18:30', score: 50, volume: 85 },
+  { time: '19:00', score: 55, volume: 88 },
+  { time: '19:30', score: 58, volume: 90 },
+  { time: '20:00', score: 60, volume: 92 },
+  { time: '20:30', score: 55, volume: 85 },
+  { time: '21:00', score: 50, volume: 75 },
+  { time: '21:30', score: 45, volume: 65 },
+  { time: '22:00', score: 35, volume: 50 },
+  { time: '22:30', score: 28, volume: 35 },
+  { time: '23:00', score: 20, volume: 22 },
+  { time: '23:30', score: 15, volume: 15 },
+];
+
+// Emotion breakdown for radar chart
+export const emotionData = [
+  { emotion: 'Joy', value: 75 },
+  { emotion: 'Trust', value: 68 },
+  { emotion: 'Surprise', value: 45 },
+  { emotion: 'Sadness', value: 25 },
+  { emotion: 'Fear', value: 18 },
+  { emotion: 'Anger', value: 22 },
+];
+
+// Hourly activity heatmap (24 hours)
+export const activityHeatmap = [
+  { hour: '00', volume: 12, avgSentiment: 15 },
+  { hour: '01', volume: 5, avgSentiment: 10 },
+  { hour: '02', volume: 2, avgSentiment: 8 },
+  { hour: '03', volume: 1, avgSentiment: 7 },
+  { hour: '04', volume: 3, avgSentiment: 12 },
+  { hour: '05', volume: 8, avgSentiment: 20 },
+  { hour: '06', volume: 18, avgSentiment: 30 },
+  { hour: '07', volume: 32, avgSentiment: 40 },
+  { hour: '08', volume: 45, avgSentiment: 50 },
+  { hour: '09', volume: 58, avgSentiment: 55 },
+  { hour: '10', volume: 68, avgSentiment: 60 },
+  { hour: '11', volume: 75, avgSentiment: 58 },
+  { hour: '12', volume: 82, avgSentiment: 50 },
+  { hour: '13', volume: 80, avgSentiment: 35 },
+  { hour: '14', volume: 88, avgSentiment: -10 },
+  { hour: '15', volume: 85, avgSentiment: -15 },
+  { hour: '16', volume: 72, avgSentiment: 5 },
+  { hour: '17', volume: 70, avgSentiment: 25 },
+  { hour: '18', volume: 80, avgSentiment: 45 },
+  { hour: '19', volume: 88, avgSentiment: 55 },
+  { hour: '20', volume: 92, avgSentiment: 60 },
+  { hour: '21', volume: 75, avgSentiment: 50 },
+  { hour: '22', volume: 50, avgSentiment: 35 },
+  { hour: '23', volume: 22, avgSentiment: 20 },
+];
+
+// Privacy audit log entries
+export const privacyAuditLog = [
+  { timestamp: '23:47:32', score: 7, channel: '#general', status: 'DELETED ✓' },
+  { timestamp: '23:47:28', score: -12, channel: '#support', status: 'DELETED ✓' },
+  { timestamp: '23:47:15', score: 45, channel: '#announcements', status: 'DELETED ✓' },
+  { timestamp: '23:46:58', score: -3, channel: '#general', status: 'DELETED ✓' },
+  { timestamp: '23:46:42', score: 22, channel: '#dev-chat', status: 'DELETED ✓' },
+  { timestamp: '23:46:30', score: 8, channel: '#general', status: 'DELETED ✓' },
+  { timestamp: '23:46:18', score: -18, channel: '#feedback', status: 'DELETED ✓' },
+  { timestamp: '23:46:05', score: 35, channel: '#general', status: 'DELETED ✓' },
+  { timestamp: '23:45:52', score: 12, channel: '#random', status: 'DELETED ✓' },
+  { timestamp: '23:45:40', score: -5, channel: '#support', status: 'DELETED ✓' },
+];
+
+// KPI data
+export const kpiData = {
+  currentMoodScore: 42,
+  messagesAnalyzed: 2847,
+  messagesLast24h: 1243,
+  peakPositivityTime: '20:15',
+  peakPositivityScore: 60,
+  privacyStatus: 'Active',
+  rawMessagesStored: 0,
+};
+
+// Community options
+export const communities = [
+  { id: 1, name: 'Dev Community', members: 1247 },
+  { id: 2, name: 'Design Guild', members: 892 },
+  { id: 3, name: 'Product Team', members: 156 },
+  { id: 4, name: 'Marketing Hub', members: 423 },
+];
