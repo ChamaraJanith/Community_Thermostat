@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: community-thermostat-db
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - community-thermostat
+
+  backend:
+    build: .
+    container_name: community-thermostat-backend
+    ports:
+      - "5000:5000"
+    environment:
+      MONGODB_URI: mongodb://admin:password@mongodb:27017/community-thermostat?authSource=admin
+      NODE_ENV: production
+      PORT: 5000
+    depends_on:
+      - mongodb
+    networks:
+      - community-thermostat
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+
+networks:
+  community-thermostat:
+    driver: bridge
