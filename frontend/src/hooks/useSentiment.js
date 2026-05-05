@@ -1,27 +1,18 @@
+// This hook is kept for backward compatibility.
+// Data fetching is now handled in App.jsx via the API service.
 import { useMemo } from 'react';
-import { sentimentTimeline } from '../mockData';
 
-export const useSentiment = (dateRange = '24h') => {
-  const filteredData = useMemo(() => {
-    // For now, return all data since we only have 24h mock data
-    // In production, this would filter based on dateRange
-    return sentimentTimeline;
-  }, [dateRange]);
-
+export const useSentiment = (data = []) => {
   const currentScore = useMemo(() => {
-    if (filteredData.length === 0) return 0;
-    return filteredData[filteredData.length - 1].score;
-  }, [filteredData]);
+    if (!data || data.length === 0) return 0;
+    return data[data.length - 1].score ?? 0;
+  }, [data]);
 
   const averageScore = useMemo(() => {
-    if (filteredData.length === 0) return 0;
-    const sum = filteredData.reduce((acc, item) => acc + item.score, 0);
-    return Math.round(sum / filteredData.length);
-  }, [filteredData]);
+    if (!data || data.length === 0) return 0;
+    const sum = data.reduce((acc, item) => acc + (item.score ?? 0), 0);
+    return Math.round(sum / data.length);
+  }, [data]);
 
-  return {
-    data: filteredData,
-    currentScore,
-    averageScore,
-  };
+  return { currentScore, averageScore };
 };

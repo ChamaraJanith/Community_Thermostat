@@ -1,6 +1,6 @@
 import { Thermometer, Circle, Zap, Lock } from 'lucide-react';
 
-const Header = ({ selectedCommunity, onCommunityChange, dateRange, onDateRangeChange, communities }) => {
+const Header = ({ selectedCommunity, onCommunityChange, dateRange, onDateRangeChange, communities, isLive = false, loading = false }) => {
   return (
     <header className="cyber-card border-b border-cyber-cyan/30 animate-slide-down relative z-20">
       <div className="px-8 py-5">
@@ -23,15 +23,24 @@ const Header = ({ selectedCommunity, onCommunityChange, dateRange, onDateRangeCh
 
           {/* Right side controls */}
           <div className="flex items-center gap-6">
-            {/* Live indicator */}
-            <div className="flex items-center gap-2 px-4 py-2 cyber-border rounded-sm border-cyber-cyan/40 cyber-pulse">
-              <Circle className="w-2.5 h-2.5 text-cyber-cyan fill-cyber-cyan animate-pulse" />
-              <span className="text-xs font-mono text-cyber-cyan font-bold tracking-widest">LIVE</span>
-            </div>
+            {/* Live / Demo indicator */}
+            {isLive ? (
+              <div className="flex items-center gap-2 px-4 py-2 cyber-border rounded-sm border-cyber-cyan/40 cyber-pulse">
+                <Circle className="w-2.5 h-2.5 text-cyber-cyan fill-cyber-cyan animate-pulse" />
+                <span className="text-xs font-mono text-cyber-cyan font-bold tracking-widest">
+                  {loading ? 'SYNCING...' : 'LIVE'}
+                </span>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 px-4 py-2 rounded-sm border border-yellow-500/40">
+                <Circle className="w-2.5 h-2.5 text-yellow-400 fill-yellow-400" />
+                <span className="text-xs font-mono text-yellow-400 font-bold tracking-widest">DEMO</span>
+              </div>
+            )}
 
             {/* Community selector */}
             <select
-              value={selectedCommunity}
+              value={selectedCommunity ?? ''}
               onChange={(e) => onCommunityChange(e.target.value)}
               className="px-4 py-2 cyber-bg text-cyber-cyan border border-cyber-cyan/30 rounded-sm font-mono text-xs focus:outline-none focus:border-cyber-cyan transition-all cursor-pointer hover:border-cyber-cyan/60 data-display appearance-none"
               style={{
@@ -44,15 +53,15 @@ const Header = ({ selectedCommunity, onCommunityChange, dateRange, onDateRangeCh
               }}
             >
               {communities.map((community) => (
-                <option 
-                  key={community.id} 
+                <option
+                  key={community.id}
                   value={community.id}
                   style={{
                     backgroundColor: '#1a0033',
                     color: '#00ffc8',
                   }}
                 >
-                  {community.name} • {community.members}
+                  {community.name}{community.members ? ` • ${community.members}` : ''}
                 </option>
               ))}
             </select>
